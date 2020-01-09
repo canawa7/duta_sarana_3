@@ -1,0 +1,21 @@
+.invoicepagenew{
+    display: flex;
+    flex-direction: column;
+
+    .page-title-invoice{
+        text-align: center;
+    }
+
+    .left-invoice-form-section{
+        width: 50%;
+        float: left;
+        padding: 2%;
+    }
+
+    .right-invoice-form-section{
+        width: 50%;
+        float: right;
+        padding: 2%;
+    }
+
+}
