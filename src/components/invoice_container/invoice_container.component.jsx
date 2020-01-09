@@ -1,6 +1,6 @@
 import React from 'react';
 import './invoice_container.styles.scss';
-import NewInvoice from '../new_invoice/new_invoice.component';
+import InvoiceItem from '../invoice_item/invoice_item.component';
 import ListInvoice from '../list_invoice/list_invoice.component';
 
 const InvoiceContainer  = (props) => {
@@ -8,8 +8,8 @@ const InvoiceContainer  = (props) => {
 
     return(
         <div className='invoice_container'>
-            <NewInvoice title='New Invoice'/>
-            <ListInvoice title='List of Invoice'/>
+            <InvoiceItem title='New Invoice' url='newinvoice'/>
+            <InvoiceItem title='List of Invoice' url='listinvoice'/>
         </div>
     )
 
