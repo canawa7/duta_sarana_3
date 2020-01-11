@@ -24,13 +24,16 @@ const ExcelDashboard = () => {
     }
 
     // console.log(payments);
+
+
     
     const totalCost = () => {
         // const items = sales;
-        const total = payments.reduce(
-            (acc, sale) => (acc += sale.jumlah),
-            0
-        );
+        const total = payments.reduce((acc, sale) => {
+            
+            sale.jumlah = sale.quantity * sale.price_per_unit;
+            return(acc += sale.jumlah)
+        },0);
         return parseInt(total);
       };
     
