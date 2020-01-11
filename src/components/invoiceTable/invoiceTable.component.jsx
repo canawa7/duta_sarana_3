@@ -19,7 +19,7 @@ const InvoiceTable = (props) => {
     const config = {
         sheetName: 'Invoice Data',
         hostClass: ' spreadsheet',
-        autoGenerateColumns: true,
+        autoGenerateColumns: false,
         width: 200,
         visible: true,
         resizable: true,
@@ -30,7 +30,7 @@ const InvoiceTable = (props) => {
     }
 
     const [_spread, setSpread] = useState({});
-    console.log(_spread);
+    // console.log(_spread);
     
 
     const workbookInit = (spread) => {
@@ -60,14 +60,23 @@ const InvoiceTable = (props) => {
         });     
     }
 
-    console.log(config.rowCount);
+    // console.log(config.rowCount);
     
 
     return(
         <TablePanel tableKey={config.chartKey} className='table-panel'>
             <SpreadSheets hostClass={config.hostClass} workbookInitialized={workbookInit} valueChanged={handleValueChanged}>
-                <Worksheet name={config.sheetName} autoGenerateColumns={config.autoGenerateColumns} rowCount={config.rowCount} colCount={config.colCount}>
-                   
+                <Worksheet name={config.sheetName} dataSource={props.tableData} autoGenerateColumns={config.autoGenerateColumns} rowCount={config.rowCount}>
+                    <Column width={50} dataField='no' headerText="No"></Column>
+                    <Column width={100} dataField='tanggal' headerText="Tanggal"></Column>
+                    <Column width={200} dataField='keterangan' headerText="Keterangan"></Column>
+                    <Column width={80} dataField='quantity' headerText="Quantity" ></Column>
+                    <Column width={100} dataField='price_per_unit' headerText="Price/Unit" formatter={config.priceFormatter} resizable="resizable"></Column>
+                    <Column width={200} dataField='no_giro' headerText="No. Giro/ E-transfer Number"></Column>
+                    <Column width={100} dataField='payment_date' headerText="Payment Date"></Column> 
+                    <Column width={100} dataField='jumlah' headerText="Total Cost" formatter={config.priceFormatter} resizable="resizable"></Column> 
+                    <Column width={100} dataField='bank' headerText="Bank"></Column> 
+                    
                 </Worksheet>
             </SpreadSheets>
             <div className='dashboardRow'>
